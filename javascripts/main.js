@@ -15,18 +15,18 @@ document.querySelector('#oatTotal').innerText = oatmealCookie
 document.querySelector('#sumTotal').innerText = totalCookie
 
 var totalCookie = chocolateCookie + lemonCookie + oatmealCookie
-console.log(totalCookie);
+// console.log(totalCookie);
 
 
 // document.querySelector('#choco').innerText = chocolateCookie
     // console.log(chocolateCookie)
 chocolate.addEventListener('click', function(e) {
   e.preventDefault()
-  console.log(chocolateCookie)
+  // console.log(chocolateCookie)
     chocolateCookie++
   Cookies.set('chocolate', chocolateCookie)
   document.querySelector('#chocoTotal').innerText = chocolateCookie
-  console.log(Cookies.get('chocolate'))
+  console.log('Chocolate', Cookies.get('chocolate'))
   updateTotalCookie()
 })
 
@@ -35,7 +35,7 @@ lemon.addEventListener('click', function(e) {
     lemonCookie++
   Cookies.set('lemon', lemonCookie)
   document.querySelector('#lemonTotal').innerText = lemonCookie
-  console.log(Cookies.get('lemon'))
+  console.log('Lemon', Cookies.get('lemon'))
   updateTotalCookie()
 })
 
@@ -44,14 +44,14 @@ oatmeal.addEventListener('click', function(e) {
     oatmealCookie++
   Cookies.set('oatmeal', oatmealCookie)
   document.querySelector('#oatTotal').innerText = oatmealCookie
-  console.log(Cookies.get('oatmeal'))
+  console.log('Oatmeal', Cookies.get('oatmeal'))
   updateTotalCookie()
 })
 
 function updateTotalCookie() {
-  var tc = parseInt(Cookies.get("chocolate")) + parseInt(Cookies.get("lemon")) + parseInt(Cookies.get('oatmeal'))
+  var tc = parseInt(Cookies.get("chocolate") || 0) + parseInt(Cookies.get("lemon")|| 0) + parseInt(Cookies.get('oatmeal')|| 0)
   Cookies.set('totalCookies', tc);
-  console.log("tc:", tc);
+  console.log('Total', tc);
   document.querySelector('#sumTotal').innerText = tc
 }
 
